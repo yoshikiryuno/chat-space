@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     if ( message.image ) {
       let html =
-        `<div class="MessageBox">
+        `<div class="MessageBox" data-message-id=${message.id}>
           <div class="MessageInfo">
             <div class="MessageInfo__userName">
               ${message.user_name}
@@ -21,24 +21,24 @@ $(function(){
       return html;
     } else {
       let html =
-      `<div class="MessageBox">
-        <div class="MessageInfo">
-          <div class="MessageInfo__userName">
-            ${message.user_name}
+        `<div class="MessageBox" data-message-id=${message.id}>
+          <div class="MessageInfo">
+            <div class="MessageInfo__userName">
+              ${message.user_name}
+            </div>
+            <div class="MessageInfo__date">
+              ${message.created_at}
+            </div>
           </div>
-          <div class="MessageInfo__date">
-            ${message.created_at}
+          <div class="Message">
+            <p class="Message__content">
+              ${message.content}
+            </p>
           </div>
-        </div>
-        <div class="Message">
-          <p class="Message__content">
-            ${message.content}
-          </p>
-        </div>
-      </div>`
-      return html;
-    };
-  }
+        </div>`
+        return html;
+      };
+    }
 
   $('.Form').on('submit', function(e){
     e.preventDefault();
